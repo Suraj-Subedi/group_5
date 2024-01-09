@@ -1,4 +1,4 @@
-package com.example.app
+package com.subedisuraj.ecom_5
 
 import io.flutter.embedding.android.FlutterActivity
 
