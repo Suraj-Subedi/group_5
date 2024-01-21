@@ -1,16 +1,13 @@
-import 'package:ecom_5/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/login_controller.dart';
+import '../controllers/register_controller.dart';
 
-class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
-
+class RegisterView extends GetView<RegisterController> {
+  const RegisterView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var height = 50;
     return Scaffold(
         body: Container(
       padding: const EdgeInsets.all(20),
@@ -24,7 +21,7 @@ class LoginView extends GetView<LoginController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 150,
+                height: 50,
               ),
               Image.asset(
                 'assets/images/logo.jpg',
@@ -38,7 +35,7 @@ class LoginView extends GetView<LoginController> {
                 height: 20,
               ),
               const Text(
-                'Welcome to',
+                'Register your acccount on',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
@@ -52,6 +49,25 @@ class LoginView extends GetView<LoginController> {
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                validator: (v) {
+                  if (v == null) {
+                    return null;
+                  }
+                  if (v.isEmpty) {
+                    return 'Please enter your full name';
+                  }
+                  return null;
+                },
+                controller: controller.fullNameController,
+                decoration: const InputDecoration(
+                  hintText: 'Enter your full name',
+                  border: OutlineInputBorder(),
                 ),
               ),
               const SizedBox(
@@ -99,9 +115,9 @@ class LoginView extends GetView<LoginController> {
                 height: 20,
               ),
               ElevatedButton(
-                onPressed: controller.onLogin,
+                onPressed: controller.onReigster,
                 child: const Text(
-                  'Login',
+                  'Register',
                   style: TextStyle(fontSize: 20),
                 ),
               ),
@@ -111,16 +127,16 @@ class LoginView extends GetView<LoginController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account?",
+                  Text("Already have an account?",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
                       )),
                   TextButton(
                     onPressed: () {
-                      Get.toNamed(Routes.REGISTER);
+                      Get.back();
                     },
-                    child: Text('Register',
+                    child: Text('Login',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -135,47 +151,3 @@ class LoginView extends GetView<LoginController> {
     ));
   }
 }
-
-
-
-// class MyCounter extends StatelessWidget {
-//   final int counter;
-//   const MyCounter({super.key, required this.counter});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       // color: Colors.red,
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           Center(
-//             child: Container(
-//               decoration: BoxDecoration(
-//                 borderRadius: BorderRadius.circular(10),
-//                 color: Colors.red,
-//               ),
-//               width: 300,
-//               child: const Text(
-//                 'You have pushed the button this many times:',
-//                 style: TextStyle(
-//                   fontSize: 20,
-//                 ),
-//                 textAlign: TextAlign.center,
-//               ),
-//             ),
-//           ),
-//           Center(
-//             child: Text(
-//               counter.toString(),
-//               style: TextStyle(
-//                 fontSize: 50,
-//                 fontWeight: FontWeight.w400,
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
