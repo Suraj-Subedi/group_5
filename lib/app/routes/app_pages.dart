@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
 
+import '../modules/admin_home/bindings/admin_home_binding.dart';
+import '../modules/admin_home/views/admin_home_view.dart';
+import '../modules/admin_main/bindings/admin_main_binding.dart';
+import '../modules/admin_main/views/admin_main_view.dart';
 import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -50,6 +54,16 @@ class AppPages {
       name: _Paths.REGISTER,
       page: () => const RegisterView(),
       binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_MAIN,
+      page: () => const AdminMainView(),
+      binding: AdminMainBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_HOME,
+      page: () => const AdminHomeView(),
+      binding: AdminHomeBinding(),
     ),
   ];
 }
