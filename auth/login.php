@@ -39,6 +39,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     $token =  bin2hex(random_bytes(32));
 
     $user_id = $user['user_id'];
+    $role = $user['role'];
 
 
     $sql = "insert into access_tokens (token,user_id) values('$token','$user_id')";
@@ -54,7 +55,8 @@ if (isset($_POST['email'], $_POST['password'])) {
         echo json_encode(array(
             "success" => true,
             "message" => "Logged in successfully!",
-            "token" => $token
+            "token" => $token,
+            "role" => $role
         ));
     }
 } else {
