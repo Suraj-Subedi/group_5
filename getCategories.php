@@ -15,27 +15,19 @@ if (isset($_POST['token'])) {
         die();
     }
 
-    $sql = "select * from vehicles inner join categories on vehicles.category_id = categories.category_id";
+    $sql = "select * from categories";
 
     $result = mysqli_query($CON, $sql);
 
-    // if (!$result) {
-    //     echo json_encode(array(
-    //         "success" => false,
-    //         "message" => "Failed to fetch vehicles"
-    //     ));
-    //     die();
-    // }
-
-    $vehicles = [];
+    $categories = [];
 
     while ($row = mysqli_fetch_assoc($result)) {
-        $vehicles[] = $row;
+        $categories[] = $row;
     }
 
     echo json_encode(array(
         "success" => true,
-        "vehicles" => $vehicles
+        "categories" => $categories
     ));
 } else {
     echo json_encode(array(
