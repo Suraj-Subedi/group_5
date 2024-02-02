@@ -13,6 +13,7 @@ Future<void> main() async {
 
   runApp(
     GetMaterialApp(
+      defaultTransition: Transition.cupertino,
       theme: ThemeData(
         useMaterial3: false,
       ),

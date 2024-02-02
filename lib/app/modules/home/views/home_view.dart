@@ -18,6 +18,12 @@ class HomeView extends GetView<HomeController> {
         title: const Text('Pahuna Wheels'),
         centerTitle: true,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed(Routes.ADD_VEHICLE);
+        },
+        child: const Icon(Icons.add),
+      ),
       body: RefreshIndicator(
         onRefresh: () async {
           await controller.getCategories();
