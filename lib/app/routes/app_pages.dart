@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/add_vehicle/bindings/add_vehicle_binding.dart';
 import '../modules/add_vehicle/views/add_vehicle_view.dart';
+import '../modules/admin_category/bindings/admin_category_binding.dart';
+import '../modules/admin_category/views/admin_category_view.dart';
 import '../modules/admin_home/bindings/admin_home_binding.dart';
 import '../modules/admin_home/views/admin_home_view.dart';
 import '../modules/admin_main/bindings/admin_main_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.ADD_VEHICLE,
       page: () => const AddVehicleView(),
       binding: AddVehicleBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_CATEGORY,
+      page: () => const AdminCategoryView(),
+      binding: AdminCategoryBinding(),
     ),
   ];
 }

@@ -14,6 +14,7 @@ abstract class Routes {
   static const ADMIN_HOME = _Paths.ADMIN_HOME;
   static const DETAIL_VEHICLE = _Paths.DETAIL_VEHICLE;
   static const ADD_VEHICLE = _Paths.ADD_VEHICLE;
+  static const ADMIN_CATEGORY = _Paths.ADMIN_CATEGORY;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const ADMIN_HOME = '/admin-home';
   static const DETAIL_VEHICLE = '/detail-vehicle';
   static const ADD_VEHICLE = '/add-vehicle';
+  static const ADMIN_CATEGORY = '/admin-category';
 }
