@@ -39,19 +39,23 @@ class CategoryResponse {
 class Category {
   final String? categoryId;
   final String? category;
+  final String? isDeleted;
 
   Category({
     this.categoryId,
     this.category,
+    this.isDeleted,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         categoryId: json["category_id"],
         category: json["category"],
+        isDeleted: json["is_deleted"],
       );
 
   Map<String, dynamic> toJson() => {
         "category_id": categoryId,
         "category": category,
+        "is_deleted": isDeleted,
       };
 }

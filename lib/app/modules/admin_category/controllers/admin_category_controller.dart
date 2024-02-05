@@ -25,13 +25,15 @@ class AdminCategoryController extends GetxController {
       var result = jsonDecode(body);
 
       if (result['success']) {
+        Get.close(1);
         Get.showSnackbar(GetSnackBar(
           backgroundColor: Colors.green,
           duration: const Duration(seconds: 2),
           title: 'Category added successfully',
           message: result['message'],
         ));
-        Get.close(1);
+        categoryController.clear();
+
         Get.find<HomeController>().getCategories();
       } else {
         Get.showSnackbar(GetSnackBar(

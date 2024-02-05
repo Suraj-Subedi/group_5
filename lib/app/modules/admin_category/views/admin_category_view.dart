@@ -59,8 +59,41 @@ class AdminCategoryView extends GetView<AdminCategoryController> {
                 return ListTile(
                   title: Text(category.category ?? ''),
                   trailing: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.delete),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          var isDeleted = category.isDeleted == '1';
+                          return AlertDialog(
+                            title: Text(
+                                '${isDeleted ? 'Restore' : "Delete"} Category'),
+                            content: Text(
+                                'Are you sure you want to ${isDeleted ? 'Restore' : "Delete"} ${category.category}?'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  controller.updateCategoryStatus(
+                                    category.categoryId!,
+                                  );
+                                },
+                                child: const Text('Yes'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: const Text('No'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    icon: Icon(
+                      category.isDeleted == '1' ? Icons.restore : Icons.delete,
+                      color:
+                          category.isDeleted == '1' ? Colors.green : Colors.red,
+                    ),
                   ),
                 );
               },
