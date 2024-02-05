@@ -7,6 +7,8 @@ if (isset($_POST['token'])) {
     $token = $_POST['token'];
     $user_id = getUserId($token);
 
+    $isAdmin = isAdmin($user_id);
+
     if (!$user_id) {
         echo json_encode(array(
             "success" => false,
@@ -15,7 +17,13 @@ if (isset($_POST['token'])) {
         die();
     }
 
-    $sql = "select * from categories";
+    $sql = '';
+
+    if ($isAdmin) {
+        $sql = "select * from categories";
+    } else {
+        $sql = "select * from categories where is_deleted = 0";
+    }
 
     $result = mysqli_query($CON, $sql);
 

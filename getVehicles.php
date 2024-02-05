@@ -35,6 +35,7 @@ if (isset($_POST['token'])) {
 
     echo json_encode(array(
         "success" => true,
+        "message" => "vehicles fecched successfully",
         "vehicles" => $vehicles
     ));
 } else {

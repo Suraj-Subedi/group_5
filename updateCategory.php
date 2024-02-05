@@ -26,46 +26,48 @@ if (isset($_POST['token'])) {
     }
 
 
-    if (isset($_POST['category_name'])) {
-        $category_name = $_POST['category_name'];
+    if (isset($_POST['category_id'])) {
+        $category_id = $_POST['category_id'];
 
-
-        $sql = "select * from categories where category = '$category_name'";
+        $sql = "select * from categories where category_id = $category_id";
 
         $result = mysqli_query($CON, $sql);
 
-        if (mysqli_num_rows($result) > 0) {
+        if (!$result) {
             echo json_encode(array(
                 "success" => false,
-                "message" => "Category already exists"
+                "message" => "Category not found"
             ));
             die();
         }
 
+        $category = mysqli_fetch_assoc($result);
 
-        $sql = "insert into categories (category) values ('$category_name')";
+        $isDeleted = $category['is_deleted'];
+
+        $sql = '';
+
+        if ($isDeleted == 0) {
+            $sql = "update categories set is_deleted = 1 where category_id = $category_id";
+        } else {
+            $sql = "update categories set is_deleted = 0 where category_id = $category_id";
+        }
 
         $result = mysqli_query($CON, $sql);
 
         if ($result) {
             echo json_encode(array(
                 "success" => true,
-                "message" => "Category added successfully"
+                "message" => "Category updated successfully"
             ));
             die();
         } else {
             echo json_encode(array(
                 "success" => false,
-                "message" => "Failed to add category"
+                "message" => "Failed to update category"
             ));
             die();
         }
-    } else {
-        echo json_encode(array(
-            "success" => false,
-            "message" => "Category name is required"
-        ));
-        die();
     }
 } else {
     echo json_encode(array(
