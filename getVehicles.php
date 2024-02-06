@@ -15,7 +15,7 @@ if (isset($_POST['token'])) {
         die();
     }
 
-    $sql = "select * from vehicles inner join categories on vehicles.category_id = categories.category_id";
+    $sql = "select full_name, email,address,vehicles.*,category from vehicles inner join categories on vehicles.category_id = categories.category_id join users on vehicles.user_id = users.user_id";
 
     $result = mysqli_query($CON, $sql);
 
