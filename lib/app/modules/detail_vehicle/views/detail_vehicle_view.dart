@@ -46,8 +46,8 @@ class DetailVehicleView extends GetView<DetailVehicleController> {
           vertical: 5,
         ),
         child: ElevatedButton(
-          onPressed: () {},
-          child: Text('Book Vehicle'),
+          onPressed: controller.bookVehicle,
+          child: const Text('Book Vehicle'),
         ),
       ),
     );

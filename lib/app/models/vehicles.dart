@@ -41,6 +41,9 @@ class VehiclesResponse {
 }
 
 class Vehicle {
+  final String? fullName;
+  final String? email;
+  final dynamic address;
   final String? vehicleId;
   final String? name;
   final String? description;
@@ -51,6 +54,9 @@ class Vehicle {
   final String? category;
 
   Vehicle({
+    this.fullName,
+    this.email,
+    this.address,
     this.vehicleId,
     this.name,
     this.description,
@@ -62,6 +68,9 @@ class Vehicle {
   });
 
   factory Vehicle.fromJson(Map<String, dynamic> json) => Vehicle(
+        fullName: json["full_name"],
+        email: json["email"],
+        address: json["address"],
         vehicleId: json["vehicle_id"],
         name: json["name"],
         description: json["description"],
@@ -73,6 +82,9 @@ class Vehicle {
       );
 
   Map<String, dynamic> toJson() => {
+        "full_name": fullName,
+        "email": email,
+        "address": address,
         "vehicle_id": vehicleId,
         "name": name,
         "description": description,
