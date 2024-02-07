@@ -8,10 +8,11 @@ import '../modules/admin_home/bindings/admin_home_binding.dart';
 import '../modules/admin_home/views/admin_home_view.dart';
 import '../modules/admin_main/bindings/admin_main_binding.dart';
 import '../modules/admin_main/views/admin_main_view.dart';
+import '../modules/bookings/bindings/bookings_binding.dart';
+import '../modules/bookings/views/bookings_view.dart';
 import '../modules/detail_vehicle/bindings/detail_vehicle_binding.dart';
 import '../modules/detail_vehicle/views/detail_vehicle_view.dart';
-import '../modules/history/bindings/history_binding.dart';
-import '../modules/history/views/history_view.dart';
+
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -47,11 +48,6 @@ class AppPages {
       binding: MainBinding(),
     ),
     GetPage(
-      name: _Paths.HISTORY,
-      page: () => const HistoryView(),
-      binding: HistoryBinding(),
-    ),
-    GetPage(
       name: _Paths.PROFILE,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
@@ -85,6 +81,11 @@ class AppPages {
       name: _Paths.ADMIN_CATEGORY,
       page: () => const AdminCategoryView(),
       binding: AdminCategoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOOKINGS,
+      page: () => const BookingsView(),
+      binding: BookingsBinding(),
     ),
   ];
 }
