@@ -23,12 +23,17 @@ class BookingsView extends GetView<BookingsController> {
                 child: CircularProgressIndicator(),
               );
             }
-            return ListView.builder(
-              itemCount: controller.bookingResponse!.bookings!.length,
-              itemBuilder: (context, index) {
-                return BookingCard(
-                    booking: controller.bookingResponse!.bookings![index]);
+            return RefreshIndicator(
+              onRefresh: () async {
+                await controller.getBookings();
               },
+              child: ListView.builder(
+                itemCount: controller.bookingResponse!.bookings!.length,
+                itemBuilder: (context, index) {
+                  return BookingCard(
+                      booking: controller.bookingResponse!.bookings![index]);
+                },
+              ),
             );
           },
         ));
@@ -97,8 +102,8 @@ class BookingCard extends StatelessWidget {
               Text(
                 booking.amount == null
                     ? "-"
-                    : "Rs." + booking.amount.toString(),
-                style: TextStyle(
+                    : "Rs.${(double.parse(booking.amount!) / 100).toStringAsFixed(2)}",
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.blue,

@@ -14,7 +14,7 @@ class BookingsController extends GetxController {
     getBookings();
   }
 
-  void getBookings() async {
+  Future<void> getBookings() async {
     try {
       var url = Uri.http(ipAddress, 'ecom5_api/getBookings.php');
       await Future.delayed(const Duration(seconds: 1));
