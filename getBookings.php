@@ -22,9 +22,9 @@ if (isset($_POST['token'])) {
     $sql = '';
 
     if ($isAdmin) {
-        $sql = "select full_name,email,address,bookings.*,vehicles.*,category from bookings join users on bookings.user_id = users.user_id join vehicles on bookings.vehicle_id = vehicles.vehicle_id join categories on vehicles.category_id = categories.category_id";
+        $sql = "select full_name,email,address,bookings.*,vehicles.*,category from bookings join users on bookings.user_id = users.user_id join vehicles on bookings.vehicle_id = vehicles.vehicle_id join categories on vehicles.category_id = categories.category_id order by booking_id desc";
     } else {
-        $sql = "select full_name,email,address,bookings.*,vehicles.*,category from bookings join users on bookings.user_id = users.user_id join vehicles on bookings.vehicle_id = vehicles.vehicle_id join categories on vehicles.category_id = categories.category_id where bookings.user_id = $user_id";
+        $sql = "select full_name,email,address,bookings.*,vehicles.*,category from bookings join users on bookings.user_id = users.user_id join vehicles on bookings.vehicle_id = vehicles.vehicle_id join categories on vehicles.category_id = categories.category_id where bookings.user_id = $user_id order by booking_id desc";
     }
 
     $result = mysqli_query($CON, $sql);

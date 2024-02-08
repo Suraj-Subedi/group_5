@@ -35,10 +35,13 @@ if (isset($_POST['token'])) {
 
         $result = mysqli_query($CON, $sql);
 
+        $booking_id = mysqli_insert_id($CON);
+
         if ($result) {
             echo json_encode(array(
                 "success" => true,
-                "message" => "Booking made successfully"
+                "message" => "Booking made successfully",
+                "booking_id" => $booking_id
             ));
             die();
         } else {
