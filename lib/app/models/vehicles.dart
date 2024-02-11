@@ -51,6 +51,7 @@ class Vehicle {
   final String? categoryId;
   final String? perDayPrice;
   final String? userId;
+  final String? isDeleted;
   final String? category;
 
   Vehicle({
@@ -64,6 +65,7 @@ class Vehicle {
     this.categoryId,
     this.perDayPrice,
     this.userId,
+    this.isDeleted,
     this.category,
   });
 
@@ -78,6 +80,7 @@ class Vehicle {
         categoryId: json["category_id"],
         perDayPrice: json["per_day_price"],
         userId: json["user_id"],
+        isDeleted: json["is_deleted"],
         category: json["category"],
       );
 
@@ -92,6 +95,7 @@ class Vehicle {
         "category_id": categoryId,
         "per_day_price": perDayPrice,
         "user_id": userId,
+        "is_deleted": isDeleted,
         "category": category,
       };
 }

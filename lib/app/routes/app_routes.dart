@@ -16,6 +16,8 @@ abstract class Routes {
   static const ADD_VEHICLE = _Paths.ADD_VEHICLE;
   static const ADMIN_CATEGORY = _Paths.ADMIN_CATEGORY;
   static const BOOKINGS = _Paths.BOOKINGS;
+  static const TEST_MAP = _Paths.TEST_MAP;
+  static const MY_VEHICLES = _Paths.MY_VEHICLES;
 }
 
 abstract class _Paths {
@@ -33,4 +35,6 @@ abstract class _Paths {
   static const ADD_VEHICLE = '/add-vehicle';
   static const ADMIN_CATEGORY = '/admin-category';
   static const BOOKINGS = '/bookings';
+  static const TEST_MAP = '/test-map';
+  static const MY_VEHICLES = '/my-vehicles';
 }

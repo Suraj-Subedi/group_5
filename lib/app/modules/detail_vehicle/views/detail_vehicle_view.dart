@@ -1,4 +1,5 @@
 import 'package:ecom_5/app/models/vehicles.dart';
+import 'package:ecom_5/app/routes/app_pages.dart';
 import 'package:ecom_5/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,21 @@ class DetailVehicleView extends GetView<DetailVehicleController> {
           Expanded(
             flex: 2,
             child: Column(
-              children: [],
+              children: [
+                ListTile(
+                  title: Text(vehicle.name ?? ''),
+                  subtitle: Text(vehicle.description ?? ''),
+                ),
+                ListTile(
+                  title: Text('Price'),
+                  subtitle: Text('Rs. ${vehicle.perDayPrice ?? ''}'),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Get.toNamed(Routes.TEST_MAP);
+                    },
+                    child: Text('View Location')),
+              ],
             ),
           ),
         ],
