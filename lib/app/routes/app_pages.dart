@@ -24,6 +24,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
+import '../modules/single_category/bindings/single_category_binding.dart';
+import '../modules/single_category/views/single_category_view.dart';
 import '../modules/test_map/bindings/test_map_binding.dart';
 import '../modules/test_map/views/test_map_view.dart';
 
@@ -99,6 +101,11 @@ class AppPages {
       name: _Paths.MY_VEHICLES,
       page: () => const MyVehiclesView(),
       binding: MyVehiclesBinding(),
+    ),
+    GetPage(
+      name: _Paths.SINGLE_CATEGORY,
+      page: () => const SingleCategoryView(),
+      binding: SingleCategoryBinding(),
     ),
   ];
 }

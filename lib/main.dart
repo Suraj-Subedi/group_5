@@ -17,6 +17,7 @@ Future<void> main() async {
         publicKey: 'test_public_key_dde0878862604f24b2475a9806c833d2',
         builder: (context, navigatorKey) {
           return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
             localizationsDelegates: const [
               KhaltiLocalizations.delegate,

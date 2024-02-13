@@ -18,6 +18,7 @@ abstract class Routes {
   static const BOOKINGS = _Paths.BOOKINGS;
   static const TEST_MAP = _Paths.TEST_MAP;
   static const MY_VEHICLES = _Paths.MY_VEHICLES;
+  static const SINGLE_CATEGORY = _Paths.SINGLE_CATEGORY;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const BOOKINGS = '/bookings';
   static const TEST_MAP = '/test-map';
   static const MY_VEHICLES = '/my-vehicles';
+  static const SINGLE_CATEGORY = '/single-category';
 }
