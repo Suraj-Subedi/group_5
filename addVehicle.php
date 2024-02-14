@@ -35,6 +35,9 @@ if (isset($_POST['token'])) {
 
 
 
+
+
+
         $image_name = $image['name'];
         $image_tmp_location = $image['tmp_name'];
         $image_extension = pathinfo($image_name, PATHINFO_EXTENSION);

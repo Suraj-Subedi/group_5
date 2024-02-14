@@ -17,6 +17,9 @@ if (isset($_POST['token'])) {
 
     $sql = "select full_name, email,address,vehicles.*,category from vehicles inner join categories on vehicles.category_id = categories.category_id join users on vehicles.user_id = users.user_id where vehicles.is_deleted =0 ";
 
+
+
+
     $result = mysqli_query($CON, $sql);
 
     // if (!$result) {
