@@ -74,7 +74,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAIL_VEHICLE,
-      page: () => const DetailVehicleView(),
+      page: () => DetailVehicleView(),
       binding: DetailVehicleBinding(),
     ),
     GetPage(

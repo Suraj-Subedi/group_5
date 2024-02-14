@@ -3,7 +3,7 @@ import 'package:ecom_5/app/routes/app_pages.dart';
 import 'package:ecom_5/app/storage.dart';
 import 'package:ecom_5/constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';

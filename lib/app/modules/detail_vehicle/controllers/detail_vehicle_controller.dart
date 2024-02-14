@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ecom_5/app/models/vehicles.dart';
+import 'package:ecom_5/app/modules/home/controllers/home_controller.dart';
 import 'package:ecom_5/app/storage.dart';
 import 'package:ecom_5/constants.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,15 @@ import 'package:http/http.dart' as http;
 import 'package:khalti_flutter/khalti_flutter.dart';
 
 class DetailVehicleController extends GetxController {
+  var vehicleRating = 0.0.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    vehicleRating.value =
+        double.tryParse((Get.arguments as Vehicle).rating ?? "") ?? 0.0;
+  }
+
   void bookVehicle() async {
     try {
       DateTimeRange? dateRange = await showDateRangePicker(
@@ -56,6 +66,39 @@ class DetailVehicleController extends GetxController {
           message: result['message'] ?? 'Failed to book vehicle',
           duration: const Duration(seconds: 2),
         ));
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  void giveRating(double rating, String vehicleId) async {
+    try {
+      var url = Uri.http(ipAddress, 'ecom5_api/giveRating.php');
+
+      var response = await http.post(url, body: {
+        'token': Storage.getToken(),
+        'vehicle_id': vehicleId,
+        'rating': rating.toString(),
+      });
+
+      var body = response.body;
+
+      var result = jsonDecode(body);
+
+      if (result['success'] ?? false) {
+        Get.close(1);
+
+        Get.showSnackbar(GetSnackBar(
+          backgroundColor: Colors.green,
+          message: result['message'] ?? 'Rating added successfully',
+          duration: const Duration(seconds: 2),
+        ));
+        Get.find<HomeController>().getVehicles();
+        double? rating = double.tryParse(result['rating']);
+        if (rating != null) {
+          vehicleRating.value = rating;
+        }
       }
     } catch (e) {
       print(e.toString());
