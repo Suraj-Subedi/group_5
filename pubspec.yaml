@@ -17,6 +17,7 @@ dependencies:
   khalti_flutter: ^3.0.0
   google_maps_flutter: ^2.5.3
   flutter_rating_bar: ^4.0.1
+  lottie: ^3.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -28,3 +29,4 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/lottie/

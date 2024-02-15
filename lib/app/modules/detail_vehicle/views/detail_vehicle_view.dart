@@ -1,5 +1,4 @@
 import 'package:ecom_5/app/models/vehicles.dart';
-import 'package:ecom_5/app/routes/app_pages.dart';
 import 'package:ecom_5/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';

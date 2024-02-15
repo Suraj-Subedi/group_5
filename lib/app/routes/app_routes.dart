@@ -19,6 +19,7 @@ abstract class Routes {
   static const TEST_MAP = _Paths.TEST_MAP;
   static const MY_VEHICLES = _Paths.MY_VEHICLES;
   static const SINGLE_CATEGORY = _Paths.SINGLE_CATEGORY;
+  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -39,4 +40,5 @@ abstract class _Paths {
   static const TEST_MAP = '/test-map';
   static const MY_VEHICLES = '/my-vehicles';
   static const SINGLE_CATEGORY = '/single-category';
+  static const SPLASH = '/splash';
 }

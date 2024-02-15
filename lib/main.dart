@@ -9,8 +9,6 @@ import 'package:khalti_flutter/khalti_flutter.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Storage.init();
-  var token = Storage.getToken();
-  var role = Storage.getRole();
 
   runApp(
     KhaltiScope(
@@ -27,11 +25,7 @@ Future<void> main() async {
               useMaterial3: false,
             ),
             title: "Application",
-            initialRoute: token == null
-                ? Routes.LOGIN
-                : role == 'admin'
-                    ? Routes.ADMIN_MAIN
-                    : Routes.MAIN,
+            initialRoute: Routes.SPLASH,
             getPages: AppPages.routes,
           );
         }),
