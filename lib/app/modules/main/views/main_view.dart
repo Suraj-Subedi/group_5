@@ -17,12 +17,13 @@ class MainView extends GetView<MainController> {
             onTap: (index) {
               controller.currentIndex.value = index;
             },
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.book), label: 'Bookings'),
+                  icon: const Icon(Icons.home), label: 'home'.tr),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Profile'),
+                  icon: const Icon(Icons.book), label: 'bookings'.tr),
+              BottomNavigationBarItem(
+                  icon: const Icon(Icons.person), label: 'profile'.tr),
             ]),
       ),
     );

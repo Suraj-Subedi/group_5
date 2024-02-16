@@ -56,6 +56,10 @@ class ProfileView extends GetView<ProfileController> {
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 20),
+                  ThemeSwicher(),
+                  const SizedBox(height: 20),
+                  LanguageSwitcher(),
+                  const SizedBox(height: 20),
                   ListTile(
                     title: const Text('Edit Profile'),
                     trailing: const Icon(Icons.arrow_forward_ios),
@@ -80,7 +84,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   const SizedBox(height: 20),
                   ListTile(
-                    title: const Text('Logout'),
+                    title: Text('logout'.tr),
                     trailing: const Icon(Icons.arrow_forward_ios),
                     onTap: () {
                       showDialog(
@@ -114,5 +118,53 @@ class ProfileView extends GetView<ProfileController> {
             );
           },
         ));
+  }
+}
+
+class LanguageSwitcher extends StatefulWidget {
+  const LanguageSwitcher({super.key});
+
+  @override
+  State<LanguageSwitcher> createState() => _LanguageSwitcherState();
+}
+
+class _ThemeSwicherState extends State<ThemeSwicher> {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: const Text('Switch Theme'),
+      trailing: Get.isDarkMode
+          ? const Icon(Icons.light_mode)
+          : const Icon(Icons.dark_mode),
+      onTap: () {
+        Get.changeTheme(Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+        setState(() {});
+      },
+    );
+  }
+}
+
+class ThemeSwicher extends StatefulWidget {
+  const ThemeSwicher({super.key});
+
+  @override
+  State<ThemeSwicher> createState() => _ThemeSwicherState();
+}
+
+class _LanguageSwitcherState extends State<LanguageSwitcher> {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: const Text('Switch Language'),
+      trailing: Get.locale == const Locale('en')
+          ? const Text('English')
+          : const Text('Nepali'),
+      onTap: () {
+        Get.updateLocale(Get.locale == const Locale('en')
+            ? const Locale('np')
+            : const Locale('en'));
+        setState(() {});
+      },
+    );
   }
 }

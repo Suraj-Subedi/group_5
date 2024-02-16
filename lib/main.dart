@@ -1,4 +1,6 @@
 import 'package:ecom_5/app/storage.dart';
+import 'package:ecom_5/theme.dart';
+import 'package:ecom_5/translations.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -20,10 +22,17 @@ Future<void> main() async {
             localizationsDelegates: const [
               KhaltiLocalizations.delegate,
             ],
+            translations: MyTranslations(),
+            locale: const Locale('en'),
+            fallbackLocale: const Locale('np'),
+            supportedLocales: const [
+              Locale('en', 'US'),
+              Locale('ne', 'NP'),
+            ],
             defaultTransition: Transition.cupertino,
-            theme: ThemeData(
-              useMaterial3: false,
-            ),
+            theme: lightTheme,
+
+            // darkTheme: darkTheme,
             title: "Application",
             initialRoute: Routes.SPLASH,
             getPages: AppPages.routes,
