@@ -34,22 +34,29 @@ if (isset($_POST['email'])) {
         }
 
         $mail = new PHPMailer();
-        $mail->SMTPDebug = 0;
         $mail->isSMTP();
-        $mail->Host = 'smtp.hostinger.com';
-        $mail->SMTPAuth = false;
+        $mail->SMTPDebug = 0;
+        $mail->Host = 'smtp.titan.email';
+        $mail->SMTPAuth = true;
         $mail->Username = 'noreply@quizhunt.online';
         $mail->Password = 'b7Ni-YrrUaHuy?2';
         $mail->SMTPSecure = 'ssl';
-        $mail->SMTPAutoTLS = false;
+        ///driver
         $mail->Port = 465;
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
 
-        $mail->isHTML(false);
+
         $mail->Subject = 'Pahuna Ghar Password Reset';
-        $mail->Body    = 'Your password reset code for Pahuna Ghar is ' . $otp;
+        $mail->Body    = "Your password reset code for Pahuna Ghar $otp";
 
         $mail->setFrom('noreply@quizhunt.online', 'Pahuna Ghar');        // Set sender of the mail          // Add a recipient
-        $mail->addAddress($email, $fullName);
+        $mail->addAddress("$email", "$fullName");  // Add a recipient
         // Add a recipient
 
         if (!$mail->send()) {
@@ -58,15 +65,10 @@ if (isset($_POST['email'])) {
                 "message" => "Failed to send code $mail->ErrorInfo"
             ));
             die();
-
+        } else {
             echo json_encode(array(
                 "success" => true,
                 "message" => "Password reset link sent to your email"
-            ));
-        } else {
-            echo json_encode(array(
-                "success" => false,
-                "message" => "Failed to send password reset link"
             ));
         }
     } else {
